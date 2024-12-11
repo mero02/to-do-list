@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>To-Do List</h1>
+<form action="/add" method="post">
+    <div class="mb-3">
+        <input type="text" name="title" class="form-control" placeholder="Nueva tarea" required>
+    </div>
+    <button class="btn btn-primary">Agregar</button>
+</form>
+<ul class="list-group mt-3">
+    {% for task in tasks %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ task.title }}
+        <a href="/delete/{{ task.id }}" class="btn btn-danger btn-sm">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -26,6 +26,31 @@
     background-color: #f8f9fa;
 }
 
+/* Ícono de tilde para completar tarea */
+.fa-check-circle {
+    color: #28a745; 
+    font-size: 2.0rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.fa-check-circle:hover {
+    color: #218838; 
+}
+
+/* Texto para "Completada" y "No Completada" */
+.table td:nth-child(7) {
+    font-weight: bold;
+    color: #6c757d; 
+}
+
+.table td:nth-child(7):contains("Completada") {
+    color: #28a745; 
+}
+
+.table td:nth-child(7):contains("No Completada") {
+    color: #dc3545; 
+}
 /* Botón de agregar */
 .btn-primary {
     display: flex;

@@ -12,3 +12,25 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteForm.action = `/delete/${taskId}`;
     });
 });
+
+function toggleCompletion(taskId, button) {
+    fetch(`/complete/${taskId}`, { method: 'POST' })
+        .then(response => {
+            if (response.ok) {
+                const row = button.closest('tr');
+                if (button.classList.contains('btn-outline-success')) {
+                    button.classList.remove('btn-outline-success');
+                    button.classList.add('btn-success');
+                    button.textContent = 'Completada';
+                    row.classList.add('table-success');
+                } else {
+                    button.classList.remove('btn-success');
+                    button.classList.add('btn-outline-success');
+                    button.textContent = 'Completar';
+                    row.classList.remove('table-success');
+                }
+            } else {
+                console.error('Error al cambiar el estado de la tarea');
+            }
+        });
+}

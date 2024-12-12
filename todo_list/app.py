@@ -57,6 +57,16 @@ def delete_task(id):
     db.session.commit()
     return redirect('/')
 
+@app.route('/complete/<int:id>', methods=['POST'])
+def toggle_task_completion(id):
+    task = Task.query.get(id)
+    if not task:
+        return "Tarea no encontrada", 404
+
+    task.done = not task.done
+    db.session.commit()
+    return redirect('/')
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

@@ -49,5 +49,4 @@ Una aplicación sencilla para gestionar tareas utilizando Flask.
 - Eliminar tareas: Permite eliminar tareas existentes.
 
 ## Próximas mejoras
-- Marcar tareas como completadas.
 - Agregar usuarios y autenticación.

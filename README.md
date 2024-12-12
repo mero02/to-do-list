@@ -20,11 +20,11 @@ Una aplicación sencilla para gestionar tareas utilizando Flask.
     ```bash
         python -m venv venv
     ```
-    # Activar en Windows:
+    Activar en Windows:
     ```bash
         venv\Scripts\activate
     ```
-    # Activar en Linux/Mac:
+    Activar en Linux/Mac:
     ```bash
         source venv/bin/activate
     ```
@@ -33,12 +33,14 @@ Una aplicación sencilla para gestionar tareas utilizando Flask.
         pip install -r requirements.txt
     ```
 4. Crea un archivo .env con las siguientes variables:
-    
-    FLASK_APP=app.py
-    FLASK_ENV=development
-    DATABASE_URL=sqlite:///tasks.db
-    SECRET_KEY=tu_clave_secreta
 
+    ```bash
+       FLASK_APP=app.py
+       FLASK_ENV=development
+       DATABASE_URL=sqlite:///tasks.db
+       SECRET_KEY=tu_clave_secreta
+    ```
+    
 5. Ejecuta la aplicación:
     ```bash
         python app.py

@@ -67,6 +67,34 @@ def toggle_task_completion(id):
     db.session.commit()
     return redirect('/')
 
+@app.route('/edit/<int:task_id>', methods=['POST'])
+def edit_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    
+    title = request.form['title']
+    deadline = request.form['deadline']
+    priority = request.form.get('priority', 'baja')
+    category = request.form.get('category', '')
+    description = request.form.get('description', '')
+
+    if deadline:
+        try:
+            deadline = datetime.strptime(deadline, '%Y-%m-%d').date()
+        except ValueError:
+            return "Formato de fecha no válido", 400
+    else:
+        deadline = None
+
+    task.title = title
+    task.deadline = deadline
+    task.priority = priority
+    task.category = category
+    task.description = description
+
+    # Guardar cambios en la base de datos
+    db.session.commit()
+    return redirect('/')
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

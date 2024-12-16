@@ -40,6 +40,17 @@
                             <i class="fas fa-check-circle" title="Marcar como {{ 'No Completada' if task.done else 'Completada' }}"></i>
                         </button>
                     </form>
+                    <!-- Botón de editar -->
+                    <button title="Editar Tarea" class="btn btn-warning btn-sm" data-bs-toggle="modal" 
+                        data-bs-target="#editTaskModal" 
+                        data-task-id="{{ task.id }}"
+                        data-task-title="{{ task.title }}"
+                        data-task-deadline="{{ task.deadline }}"
+                        data-task-priority="{{ task.priority }}"
+                        data-task-category="{{ task.category }}"
+                        data-task-description="{{ task.description }}">
+                    <i class="fas fa-edit"></i>
+                    </button>
                     <!-- Ícono de basura para eliminar -->
                     <button title="Eliminar Tarea" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTaskModal" data-task-id="{{ task.id }}" data-task-title="{{ task.title }}">
                         <i class="fas fa-trash"></i>
@@ -89,6 +100,50 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Guardar Tarea</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para editar tareas -->
+<div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTaskModalLabel">Modificar Tarea</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editTaskForm" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="edit-title">Título de la tarea:</label>
+                        <input type="text" name="title" id="edit-title" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-deadline">Fecha límite:</label>
+                        <input type="date" name="deadline" id="edit-deadline" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-priority">Prioridad:</label>
+                        <select name="priority" id="edit-priority" class="form-select">
+                            <option value="baja">Baja</option>
+                            <option value="media">Media</option>
+                            <option value="alta">Alta</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-category">Categoría:</label>
+                        <input type="text" name="category" id="edit-category" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-description">Descripción:</label>
+                        <textarea name="description" id="edit-description" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                 </div>
             </form>
         </div>

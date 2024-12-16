@@ -74,6 +74,7 @@
 .btn-danger {
     background-color: #dc3545; 
     border: none;
+    margin-left: 10px;
 }
 
 .btn-danger:hover {

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Bienvenido a tu To-Do List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row align-items-center mb-4">
+        <div class="col">
+            <h2>Bienvenido, {{ current_user.username }}!</h2>
+        </div>
+        <div class="col-auto">
+            <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">
+                <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="m-0">To-Do List</h1>
+                <button title="Agregar Tarea" type="button" class="add-task-btn" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <!-- Tabla para mostrar las tareas -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Título</th>
+                            <th>Fecha Límite</th>
+                            <th>Prioridad</th>
+                            <th>Categoría</th>
+                            <th>Descripción</th>
+                            <th>Creado</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.deadline if task.deadline else "No especificada" }}</td>
+                            <td>{{ task.priority if task.priority else "No especificada" }}</td>
+                            <td>{{ task.category if task.category else "No especificada" }}</td>
+                            <td>{{ task.description if task.description else "No hay descripción" }}</td>
+                            <td>{{ task.created_at.strftime('%d/%m/%Y %H:%M') }}</td>
+                            <td>{{ 'Completada' if task.done else 'No Completada' }}</td>
+                            <td>
+                                <!-- Ícono de tilde para cambiar estado -->
+                                <form action="/complete/{{ task.id }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-link p-0">
+                                        <i class="fas fa-check-circle task-check-icon" title="Marcar como {{ 'No Completada' if task.done else 'Completada' }}"></i>
+                                    </button>
+                                </form>
+                                <!-- Botón de editar -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editTaskModal"
+                                    data-task-id="{{ task.id }}" data-task-title="{{ task.title }}" 
+                                    data-task-deadline="{{ task.deadline }}" data-task-priority="{{ task.priority }}"
+                                    data-task-category="{{ task.category }}" data-task-description="{{ task.description }}">
+                                <i class="fas fa-edit"></i>
+                                </button>
+                                <!-- Ícono de basura para eliminar -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTaskModal" 
+                                    data-task-id="{{ task.id }}" data-task-title="{{ task.title }}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+</div>
+
+{% include 'modals/add_task_modal.html' %}
+{% include 'modals/edit_task_modal.html' %}
+{% include 'modals/delete_task_modal.html' %}
+
+{% endblock %}

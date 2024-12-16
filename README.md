@@ -1,6 +1,6 @@
 # To-Do List App
 
-Una aplicación sencilla para gestionar tareas utilizando Flask.
+Una aplicación para gestionar tareas de distintos usuarios utilizando Flask.
 
 ## Tecnologías
 
@@ -48,7 +48,13 @@ Una aplicación sencilla para gestionar tareas utilizando Flask.
 
 ## Funcionalidades
 - Agregar tareas: Permite agregar nuevas tareas a la lista.
+- Modificar tareas: Permite modificar tareas existentes.
 - Eliminar tareas: Permite eliminar tareas existentes.
+- Marcar tareas como completadas: Permite marcar tareas como completadas y actualiza su apariencia visual en la tabla.
+- Visualización de tareas con categorías y prioridades: Las tareas se muestran con su categoría y prioridad, lo que facilita su gestión.
+- Interfaz responsiva: Utiliza Bootstrap para crear una interfaz de usuario adaptativa y amigable para dispositivos móviles y de escritorio.
+- Autenticación de usuarios: Los usuarios pueden iniciar sesión para gestionar sus propias tareas. Cada usuario solo puede ver y modificar sus tareas, evitando la mezcla de datos entre usuarios diferentes.
 
 ## Próximas mejoras
-- Agregar usuarios y autenticación.
+- Agregar notificaciones tipo "Toast": Mejorar la experiencia del usuario con notificaciones emergentes para las acciones como agregar, editar o eliminar tareas.
+- Filtrado y búsqueda de tareas: Agregar funcionalidades para filtrar tareas por fecha de vencimiento, prioridad, estado (completada/no completada) o categoría.

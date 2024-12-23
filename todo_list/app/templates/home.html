@@ -80,4 +80,11 @@
 {% include 'modals/edit_task_modal.html' %}
 {% include 'modals/delete_task_modal.html' %}
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <script>
+                    const flashMessages = {{ messages | tojson | safe }};
+                </script>
+            {% endif %}
+        {% endwith %}
 {% endblock %}

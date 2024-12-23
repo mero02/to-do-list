@@ -61,3 +61,29 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('editTaskForm').action = `/edit/${taskId}`;
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof flashMessages !== 'undefined' && flashMessages.length > 0) {
+        const toastContainer = document.getElementById('toastContainer');
+        flashMessages.forEach(([category, message]) => {
+            const toast = document.createElement('div');
+            toast.className = `toast align-items-center text-bg-${category} border-0 mb-2`;
+            toast.role = 'alert';
+            toast.ariaLive = 'assertive';
+            toast.ariaAtomic = 'true';
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+            toastContainer.appendChild(toast);
+
+            // Inicializar el toast automáticamente
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        });
+    }
+});

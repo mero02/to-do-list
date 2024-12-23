@@ -56,5 +56,4 @@ Una aplicación para gestionar tareas de distintos usuarios utilizando Flask.
 - Autenticación de usuarios: Los usuarios pueden iniciar sesión para gestionar sus propias tareas. Cada usuario solo puede ver y modificar sus tareas, evitando la mezcla de datos entre usuarios diferentes.
 
 ## Próximas mejoras
-- Agregar notificaciones tipo "Toast": Mejorar la experiencia del usuario con notificaciones emergentes para las acciones como agregar, editar o eliminar tareas.
 - Filtrado y búsqueda de tareas: Agregar funcionalidades para filtrar tareas por fecha de vencimiento, prioridad, estado (completada/no completada) o categoría.

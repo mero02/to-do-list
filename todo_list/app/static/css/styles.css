@@ -114,3 +114,13 @@
 .task-check-icon {
     color: #28a745 !important; 
 }
+
+/* Toast*/
+
+.toast-container {
+    z-index: 1056;
+}
+
+.toast {
+    min-width: 200px;
+}
